@@ -1,0 +1,296 @@
+@font-face {
+  font-family: "Anek";
+  src: url("../public/fonts/Anek_Kannada/AnekKannada-VariableFont_wdth,wght.ttf");
+}
+
+@font-face {
+  font-family: "Anek-bold";
+  src: url("../public/fonts/Anek_Kannada/static/AnekKannada/AnekKannada-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Anek-extralight";
+  src: url("../public/fonts/Anek_Kannada/static/AnekKannada/AnekKannada-ExtraLight.ttf");
+}
+
+@font-face {
+  font-family: "Anek-light";
+  src: url("../public/fonts/Anek_Kannada/static/AnekKannada/AnekKannada-Light.ttf");
+}
+
+@font-face {
+  font-family: "Anek-medium";
+  src: url("../public/fonts/Anek_Kannada/static/AnekKannada/AnekKannada-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Anek-regular";
+  src: url("../public/fonts/Anek_Kannada/static/AnekKannada/AnekKannada-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Anek-semibold";
+  src: url("../public/fonts/Anek_Kannada/static/AnekKannada/AnekKannada-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Anek-thin";
+  src: url("../public/fonts/Anek_Kannada/static/AnekKannada/AnekKannada-Thin.ttf");
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("../public/fonts/Cairo/Cairo-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Cairo-black";
+  src: url("../public/fonts/Cairo/static/Cairo-Black.ttf");
+}
+
+@font-face {
+  font-family: "Cairo-bold";
+  src: url("../public/fonts/Cairo/static/Cairo-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Cairo-extrabold";
+  src: url("../public/fonts/Cairo/static/Cairo-ExtraBold.ttf");
+}
+
+@font-face {
+  font-family: "Cairo-extralight";
+  src: url("../public/fonts/Cairo/static/Cairo-ExtraLight.ttf");
+}
+
+@font-face {
+  font-family: "Cairo-light";
+  src: url("../public/fonts/Cairo/static/Cairo-Light.ttf");
+}
+
+@font-face {
+  font-family: "Cairo-medium";
+  src: url("../public/fonts/Cairo/static/Cairo-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Cairo-regular";
+  src: url("../public/fonts/Cairo/static/Cairo-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Cairo-semibold";
+  src: url("../public/fonts/Cairo/static/Cairo-Semibold.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta";
+  src: url("../public/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-italic";
+  src: url("../public/fonts/Plus_Jakarta_Sans/PlusJakartaSans-Italic-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-bold";
+  src: url("../public/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-bold-italic";
+  src: url("../public/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-BoldItalic.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-extra-bold";
+  src: url("../public/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-ExtraBold.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-extra-bold-italic";
+  src: url("../public/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-ExtraBoldItalic.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-extra-light";
+  src: url("../public/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-ExtraLight.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-extra-light-italic";
+  src: url("../public/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-ExtraLightItalic.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-italic-font";
+  src: url("../public/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-Italic.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-light";
+  src: url("../public/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-Light.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-light-italic";
+  src: url("../public/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-LightItalic.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-medium";
+  src: url("../public/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-medium-italic";
+  src: url("../public/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-MediumItalic.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-regular";
+  src: url("../public/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-semibold";
+  src: url("../public/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Plus-Jakarta-semibold-italic";
+  src: url("../public/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-SemiBoldItalic.ttf");
+}
+
+.anek {
+  font-family: "Anek", serif !important;
+}
+
+.anek-bold {
+  font-family: "Anek-bold", serif !important;
+}
+
+.anek-extralight {
+  font-family: "Anek-extralight", serif !important;
+}
+
+.anek-light {
+  font-family: "Anek-light", serif !important;
+}
+
+.anek-medium {
+  font-family: "Anek-medium", serif !important;
+}
+
+.anek-regular {
+  font-family: "Anek-regular", serif !important;
+}
+
+.anek-semibold {
+  font-family: "Anek-semibold", serif !important;
+}
+
+.anek-thin {
+  font-family: "Anek-thin", serif !important;
+}
+
+.cairo {
+  font-family: "Cairo", serif !important;
+}
+
+.cairo-black {
+  font-family: "Cairo-black", serif !important;
+}
+
+.cairo-bold {
+  font-family: "Cairo-bold", serif !important;
+}
+
+.cairo-extrabold {
+  font-family: "Cairo-extrabold", serif !important;
+}
+
+.cairo-extralight {
+  font-family: "Cairo-extralight", serif !important;
+}
+
+.cairo-light {
+  font-family: "Cairo-light", serif !important;
+}
+
+.cairo-medium {
+  font-family: "Cairo-medium", serif !important;
+}
+
+.cairo-regular {
+  font-family: "Cairo-regular", serif !important;
+}
+
+.cairo-semibold {
+  font-family: "Cairo-semibold", serif !important;
+}
+
+.plus-Jakarta {
+  font-family: "Plus-Jakarta", serif !important;
+}
+
+.plus-Jakarta-italic {
+  font-family: "Plus-Jakarta-italic", serif !important;
+}
+
+.plus-Jakarta-bold {
+  font-family: "Plus-Jakarta-bold", serif !important;
+}
+
+.plus-Jakarta-bold-italic {
+  font-family: "Plus-Jakarta-bold-italic", serif !important;
+}
+
+.plus-Jakarta-extra-bold {
+  font-family: "Plus-Jakarta-extra-bold", serif !important;
+}
+
+.plus-Jakarta-extra-bold-italic {
+  font-family: "Plus-Jakarta-extra-bold-italic", serif !important;
+}
+
+.plus-Jakarta-extra-light {
+  font-family: "Plus-Jakarta-extra-light", serif !important;
+}
+
+.plus-Jakarta-extra-light-italic {
+  font-family: "Plus-Jakarta-extra-light-italic", serif !important;
+}
+
+.plus-Jakarta-italic-font {
+  font-family: "Plus-Jakarta-italic-font", serif !important;
+}
+
+.plus-Jakarta-light {
+  font-family: "Plus-Jakarta-light", serif !important;
+}
+
+.plus-Jakarta-light-italic {
+  font-family: "Plus-Jakarta-light-italic", serif !important;
+}
+
+.plus-Jakarta-medium {
+  font-family: "Plus-Jakarta-medium", serif !important;
+}
+
+.plus-Jakarta-medium-italic {
+  font-family: "Plus-Jakarta-medium-italic", serif !important;
+}
+
+.plus-Jakarta-regular {
+  font-family: "Plus-Jakarta-regular", serif !important;
+}
+
+.plus-Jakarta-semibold {
+  font-family: "Plus-Jakarta-semibold", serif !important;
+}
+
+.plus-Jakarta-semibold-italic {
+  font-family: "Plus-Jakarta-semibold-italic" , serif !important;
+}
