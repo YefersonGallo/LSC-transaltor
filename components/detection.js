@@ -66,7 +66,7 @@ export default function Detection({ type, letter="", setReadyText, setNewWord })
             setNewWord(prevState => `${prevState}${text}`)
             setCantLetter(0);
         }
-    }, [cantLetter])
+    }, [cantLetter, setNewWord, text, type])
 
     useEffect(() => {
         if(ready === 1) {
@@ -75,7 +75,7 @@ export default function Detection({ type, letter="", setReadyText, setNewWord })
         if(ready === 1 && type === 1) {
             setReady(2)
         }
-    }, [ready])
+    }, [ready, type, setReadyText])
 
     useEffect(() => {
         runCoco()

@@ -2,8 +2,9 @@ import Detection from "../../../components/detection";
 import {useRouter} from "next/router";
 import Layout from "../../../components/layout";
 import {useState} from "react";
+import Image from "next/image";
 
-export default function () {
+export default function Word () {
 
     const route = useRouter();
 
@@ -24,7 +25,7 @@ export default function () {
                     word &&
                     <div className="camera-comparison">
                         <Detection letter={word} setReadyText={setReady} type={0} />
-                        <img src={`/images/${word}.jpg`} className="image-sign"/>
+                        <Image src={`/images/${word}.jpg`} width={640} height={480} alt={`letter-${word}`} />
                     </div>
                 }
             </div>

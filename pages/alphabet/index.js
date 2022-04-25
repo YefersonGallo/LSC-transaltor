@@ -14,8 +14,8 @@ export default function Alphabet() {
                 <div className="cards">
                     {
                         WORDS.map((word, index) => (
-                            <Link href={`/alphabet/${word}`}>
-                                <div className="card" key={index}>
+                            <Link href={`/alphabet/${word}`} key={index} passHref>
+                                <div className="card">
                                     <h1 className="word-cover plus-Jakarta-extra-bold">{word.toUpperCase()}</h1>
                                 </div>
                             </Link>

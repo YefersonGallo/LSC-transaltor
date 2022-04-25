@@ -15,13 +15,13 @@ export default function Home() {
             </Head>
             <h1 className="anek-bold">Sistema de traducción del Lenguaje de Señas Colombiano a Texto en español</h1>
             <div className="init-options">
-                <Link href="/alphabet">
+                <Link href="/alphabet" passHref>
                     <div className="init-option">
                         <i className="init-icon fas fa-book-reader" />
                         <h2 className="plus-Jakarta-medium">Aprende</h2>
                     </div>
                 </Link>
-                <Link href="/practice">
+                <Link href="/practice" passHref>
                     <div className="init-option">
                         <i className="init-icon fas fa-chalkboard-teacher" />
                         <h2 className="plus-Jakarta-medium">Práctica</h2>
