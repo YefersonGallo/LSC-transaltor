@@ -27,6 +27,7 @@ export const recognizeWord = (boxes, classes, scores, threshold, imgWidth, imgHe
     for(let i=0; i <= boxes.length; i++) {
         if(boxes[i] && classes[i] && scores[i] > threshold) {
             const text = classes[i]
+            console.log(labelMap[text]['name'])
             setText(prevText => {
                 if(prevText === labelMap[text]['name']) {
                     if(word === labelMap[text]['name']) setCant(prevState => prevState + 1)

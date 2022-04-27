@@ -44,6 +44,10 @@ export default function Detection({ type, letter="", setReadyText, setNewWord })
             const classes = await obj[1].array()
             const scores = await obj[3].array()
 
+            console.log(boxes)
+            console.log(classes)
+            console.log(scores)
+
             setReady(prevReady => prevReady === 0 ? 1 : 2);
 
             if(type === 0){
