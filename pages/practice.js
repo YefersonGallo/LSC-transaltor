@@ -35,7 +35,7 @@ export default function Practice() {
                 <p className="plus-Jakarta-medium mb">Te aparecerá una palabra la cuál debes deletrear haciendo la seña</p>
                 <p className="plus-Jakarta-medium mb">En caso de no reconocer la seña, acerca o alejar la mano de la cámara</p>
                 {
-                    !ready ? <p className="plus-Jakarta-medium-italic">Espera un momento mientras se carga el modelo</p> : <p className="plus-Jakarta-medium-italic">Se ha cargado el modelo, ya puedes empezar</p>
+                    !ready ? <p className="plus-Jakarta-medium-italic bold">Espera un momento mientras se carga el modelo</p> : <p className="plus-Jakarta-medium-italic bold">Se ha cargado el modelo, ya puedes empezar</p>
                 }
                 <div className="create-word">
                     <Detection letter={""} setReadyText={setReady} type={1} setNewWord={setNewWord} />

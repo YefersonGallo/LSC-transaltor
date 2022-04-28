@@ -19,7 +19,7 @@ export default function Word () {
                 <p className="plus-Jakarta-medium mb">La imagen a la derecha corresponde a la seña de la letra {word}, intenta realizar la seña manteniendo la distancia según la imagen.</p>
                 <p className="plus-Jakarta-medium mb">En caso de no reconocer la seña, acerca o alejar la mano de la cámara</p>
                 {
-                    !ready ? <p className="plus-Jakarta-medium-italic">Espera un momento mientras se carga el modelo</p> : <p className="plus-Jakarta-medium-italic">Se ha cargado el modelo, ya puedes empezar</p>
+                    !ready ? <p className="plus-Jakarta-medium-italic bold">Espera un momento mientras se carga el modelo</p> : <p className="plus-Jakarta-medium-italic bold">Se ha cargado el modelo, ya puedes empezar</p>
                 }
                 {
                     word &&

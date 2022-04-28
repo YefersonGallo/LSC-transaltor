@@ -15,7 +15,8 @@ export default function Detection({ type, letter="", setReadyText, setNewWord })
 
 
     const runCoco = async () => {
-        const net = await tf.loadGraphModel('https://tfjslscmodel.s3.us-east.cloud-object-storage.appdomain.cloud/model.json')
+        //const net = await tf.loadGraphModel('https://tfjslscmodel.s3.us-east.cloud-object-storage.appdomain.cloud/model.json')
+        const net = await tf.loadGraphModel('https://lsc-model-2.s3.us-east.cloud-object-storage.appdomain.cloud/model.json')
         setInterval(() => {
             detect(net);
         }, 1000);
@@ -43,10 +44,6 @@ export default function Detection({ type, letter="", setReadyText, setNewWord })
             const boxes = await obj[2].array()
             const classes = await obj[1].array()
             const scores = await obj[3].array()
-
-            console.log(boxes)
-            console.log(classes)
-            console.log(scores)
 
             setReady(prevReady => prevReady === 0 ? 1 : 2);
 
