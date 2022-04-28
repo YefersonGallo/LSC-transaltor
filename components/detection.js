@@ -2,7 +2,6 @@ import React, {useEffect, useRef, useState} from "react";
 import Webcam from "react-webcam";
 import * as tf from "@tensorflow/tfjs";
 import { generateWord, recognizeWord } from "./utilities";
-import Timer from "./timer";
 import {BounceLoader} from "react-spinners";
 
 export default function Detection({ type, letter="", setReadyText, setNewWord }) {
@@ -12,14 +11,14 @@ export default function Detection({ type, letter="", setReadyText, setNewWord })
     const [cantLetter, setCantLetter] = useState(0)
 
     const webcamRef = useRef(null);
-
+    const canvasRef = useRef(null);
 
     const runCoco = async () => {
-        //const net = await tf.loadGraphModel('https://tfjslscmodel.s3.us-east.cloud-object-storage.appdomain.cloud/model.json')
-        const net = await tf.loadGraphModel('https://lsc-model-2.s3.us-east.cloud-object-storage.appdomain.cloud/model.json')
+        const net = await tf.loadGraphModel('https://tfjslscmodel.s3.us-east.cloud-object-storage.appdomain.cloud/model.json')
+        //const net = await tf.loadGraphModel('https://lsc-model-2.s3.us-east.cloud-object-storage.appdomain.cloud/model.json')
         setInterval(() => {
             detect(net);
-        }, 1000);
+        }, 16.7);
     };
 
     const detect = async (net) => {
@@ -35,6 +34,9 @@ export default function Detection({ type, letter="", setReadyText, setNewWord })
             webcamRef.current.video.width = videoWidth;
             webcamRef.current.video.height = videoHeight;
 
+            canvasRef.current.width = videoWidth;
+            canvasRef.current.height = videoHeight;
+
             const img = tf.browser.fromPixels(video)
             const resized = tf.image.resizeBilinear(img, [videoWidth, videoHeight])
             const casted = resized.cast('int32')
@@ -47,10 +49,12 @@ export default function Detection({ type, letter="", setReadyText, setNewWord })
 
             setReady(prevReady => prevReady === 0 ? 1 : 2);
 
+            const ctx = canvasRef.current.getContext("2d");
+
             if(type === 0){
-                recognizeWord(boxes[0], classes[0], scores[0], 0.85, videoWidth, videoHeight, setText, setCantLetter, letter)
+                requestAnimationFrame(()=>{recognizeWord(boxes[0], classes[0], scores[0], 0.65, videoWidth, videoHeight, setText, setCantLetter, letter, ctx)})
             } else if(type === 1) {
-                generateWord(boxes[0], classes[0], scores[0], 0.85, videoWidth, videoHeight, setText, setCantLetter)
+                requestAnimationFrame(()=>{generateWord(boxes[0], classes[0], scores[0], 0.65, videoWidth, videoHeight, setText, setCantLetter, ctx)})
             }
 
             tf.dispose(img)
@@ -95,6 +99,20 @@ export default function Detection({ type, letter="", setReadyText, setNewWord })
                     right: 0,
                     textAlign: "center",
                     zindex: 9,
+                    width: 640,
+                    height: 480,
+                }}
+            />
+            <canvas
+                ref={canvasRef}
+                style={{
+                    position: "absolute",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    left: 0,
+                    right: 0,
+                    textAlign: "center",
+                    zindex: 8,
                     width: 640,
                     height: 480,
                 }}

@@ -23,11 +23,11 @@ const labelMap = {
 }
 
 
-export const recognizeWord = (boxes, classes, scores, threshold, imgWidth, imgHeight, setText, setCant, word)=>{
+export const recognizeWord = (boxes, classes, scores, threshold, imgWidth, imgHeight, setText, setCant, word, ctx)=>{
     for(let i=0; i <= boxes.length; i++) {
         if(boxes[i] && classes[i] && scores[i] > threshold) {
+            const [y,x,height,width] = boxes[i]
             const text = classes[i]
-            console.log(labelMap[text]['name'])
             setText(prevText => {
                 if(prevText === labelMap[text]['name']) {
                     if(word === labelMap[text]['name']) setCant(prevState => prevState + 1)
@@ -36,13 +36,24 @@ export const recognizeWord = (boxes, classes, scores, threshold, imgWidth, imgHe
                 }
                 return labelMap[text]['name']
             })
+            ctx.strokeStyle = labelMap[text]['color']
+            ctx.lineWidth = 10
+            ctx.fillStyle = 'white'
+            ctx.font = '30px Arial'
+
+            // DRAW!!
+            ctx.beginPath()
+            ctx.fillText(labelMap[text]['name'] + ' - ' + Math.round(scores[i]*100)/100, x*imgWidth, y*imgHeight-10)
+            ctx.rect(x*imgWidth, y*imgHeight, width*imgWidth/2, height*imgHeight/2);
+            ctx.stroke()
         }
     }
 }
 
-export const generateWord = (boxes, classes, scores, threshold, imgWidth, imgHeight, setText, setCant)=>{
+export const generateWord = (boxes, classes, scores, threshold, imgWidth, imgHeight, setText, setCant, ctx)=>{
     for(let i=0; i <= boxes.length; i++) {
         if(boxes[i] && classes[i] && scores[i] > threshold) {
+            const [y,x,height,width] = boxes[i]
             const text = classes[i]
             setText(prevText => {
                 if(prevText === labelMap[text]['name']) {
@@ -52,6 +63,16 @@ export const generateWord = (boxes, classes, scores, threshold, imgWidth, imgHei
                 }
                 return labelMap[text]['name']
             })
+            ctx.strokeStyle = labelMap[text]['color']
+            ctx.lineWidth = 10
+            ctx.fillStyle = 'white'
+            ctx.font = '30px Arial'
+
+            // DRAW!!
+            ctx.beginPath()
+            ctx.fillText(labelMap[text]['name'] + ' - ' + Math.round(scores[i]*100)/100, x*imgWidth, y*imgHeight-10)
+            ctx.rect(x*imgWidth, y*imgHeight, width*imgWidth/2, height*imgHeight/2);
+            ctx.stroke()
         }
     }
 }
