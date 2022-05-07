@@ -14,7 +14,8 @@ export default function Detection({ type, letter="", setReadyText, setNewWord })
     const canvasRef = useRef(null);
 
     const runCoco = async () => {
-        const net = await tf.loadGraphModel('https://tfjslscmodel.s3.us-east.cloud-object-storage.appdomain.cloud/model.json')
+        const net = await tf.loadGraphModel('https://lsc-cloud-1.s3.us-east.cloud-object-storage.appdomain.cloud/model.json')
+        //const net = await tf.loadGraphModel('https://tfjslscmodel.s3.us-east.cloud-object-storage.appdomain.cloud/model.json')
         //const net = await tf.loadGraphModel('https://lsc-model-2.s3.us-east.cloud-object-storage.appdomain.cloud/model.json')
         setInterval(() => {
             detect(net);
