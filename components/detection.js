@@ -1,10 +1,12 @@
 import React, {useEffect, useRef, useState} from "react";
 import Webcam from "react-webcam";
 import * as tf from "@tensorflow/tfjs";
-import { generateWord, recognizeWord } from "./utilities";
+import {drawBox, generateWord, recognizeWord} from "./utilities";
 import {BounceLoader} from "react-spinners";
 
-export default function Detection({ type, letter="", setReadyText, setNewWord }) {
+export default function Detection({type, letter = "", setReadyText, setNewWord}) {
+
+    const THRESHOLD = 0.9
 
     const [text, setText] = useState("");
     const [ready, setReady] = useState(0)
@@ -44,18 +46,21 @@ export default function Detection({ type, letter="", setReadyText, setNewWord })
             const expanded = casted.expandDims(0)
             const obj = await net.executeAsync(expanded)
 
-            const boxes = await obj[2].array()
-            const classes = await obj[1].array()
-            const scores = await obj[3].array()
+            const boxes = await obj[3].array()
+            const classes = await obj[4].array()
+            const scores = await obj[0].array()
 
             setReady(prevReady => prevReady === 0 ? 1 : 2);
 
             const ctx = canvasRef.current.getContext("2d");
 
-            if(type === 0){
-                requestAnimationFrame(()=>{recognizeWord(boxes[0], classes[0], scores[0], 0.65, videoWidth, videoHeight, setText, setCantLetter, letter, ctx)})
-            } else if(type === 1) {
-                requestAnimationFrame(()=>{generateWord(boxes[0], classes[0], scores[0], 0.65, videoWidth, videoHeight, setText, setCantLetter, ctx)})
+            if (type === 0) {
+                recognizeWord(boxes[0], classes[0], scores[0], THRESHOLD, videoWidth, videoHeight, setText, setCantLetter, letter, ctx)
+                requestAnimationFrame(() => {
+                    drawBox(ctx, boxes[0], classes[0], scores[0], THRESHOLD, videoWidth, videoHeight)
+                })
+            } else if (type === 1) {
+                generateWord(boxes[0], classes[0], scores[0], THRESHOLD, videoWidth, videoHeight, setText, setCantLetter)
             }
 
             tf.dispose(img)
@@ -68,17 +73,17 @@ export default function Detection({ type, letter="", setReadyText, setNewWord })
     };
 
     useEffect(() => {
-        if(cantLetter === 6 && type === 1) {
+        if (cantLetter === 6 && type === 1) {
             setNewWord(prevState => `${prevState}${text}`)
             setCantLetter(0);
         }
     }, [cantLetter, setNewWord, text, type])
 
     useEffect(() => {
-        if(ready === 1) {
+        if (ready === 1) {
             setReadyText(true)
         }
-        if(ready === 1 && type === 1) {
+        if (ready === 1 && type === 1) {
             setReady(2)
         }
     }, [ready, type, setReadyText])
@@ -87,7 +92,7 @@ export default function Detection({ type, letter="", setReadyText, setNewWord })
         runCoco()
     }, []);
 
-    return(
+    return (
         <div className="camera">
             <Webcam
                 ref={webcamRef}
@@ -119,10 +124,11 @@ export default function Detection({ type, letter="", setReadyText, setNewWord })
                 }}
             />
             {
-                ready === 0 && <div className="timer-ring init-timer"><BounceLoader size={60} color={"#E79B25"} /></div>
+                ready === 0 && <div className="timer-ring init-timer"><BounceLoader size={60} color={"#E79B25"}/></div>
             }
             {
-                (type === 0 && ready === 2) && (cantLetter > 2 ? <i className="ready-icon fas fa-check-circle" /> : <i className="wrong-icon fas fa-times-circle" />)
+                (type === 0 && ready === 2) && (cantLetter > 2 ? <i className="ready-icon fas fa-check-circle"/> :
+                    <i className="wrong-icon fas fa-times-circle"/>)
             }
         </div>
     )

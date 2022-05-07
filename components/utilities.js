@@ -23,55 +23,50 @@ const labelMap = {
 }
 
 
-export const recognizeWord = (boxes, classes, scores, threshold, imgWidth, imgHeight, setText, setCant, word, ctx)=>{
-    for(let i=0; i <= boxes.length; i++) {
-        if(boxes[i] && classes[i] && scores[i] > threshold) {
-            const [y,x,height,width] = boxes[i]
+export const recognizeWord = (boxes, classes, scores, threshold, imgWidth, imgHeight, setText, setCant, word) => {
+    for (let i = 0; i <= boxes.length; i++) {
+        if (boxes[i] && classes[i] && scores[i] > threshold) {
             const text = classes[i]
             setText(prevText => {
-                if(prevText === labelMap[text]['name']) {
-                    if(word === labelMap[text]['name']) setCant(prevState => prevState + 1)
+                if (prevText === labelMap[text]['name']) {
+                    if (word === labelMap[text]['name']) setCant(prevState => prevState + 1)
                 } else {
                     setCant(0);
                 }
                 return labelMap[text]['name']
             })
-            ctx.strokeStyle = labelMap[text]['color']
-            ctx.lineWidth = 10
-            ctx.fillStyle = 'white'
-            ctx.font = '30px Arial'
-
-            // DRAW!!
-            ctx.beginPath()
-            ctx.fillText(labelMap[text]['name'] + ' - ' + Math.round(scores[i]*100)/100, x*imgWidth, y*imgHeight-10)
-            ctx.rect(x*imgWidth, y*imgHeight, width*imgWidth/2, height*imgHeight/2);
-            ctx.stroke()
         }
     }
 }
 
-export const generateWord = (boxes, classes, scores, threshold, imgWidth, imgHeight, setText, setCant, ctx)=>{
-    for(let i=0; i <= boxes.length; i++) {
-        if(boxes[i] && classes[i] && scores[i] > threshold) {
-            const [y,x,height,width] = boxes[i]
+export const generateWord = (boxes, classes, scores, threshold, imgWidth, imgHeight, setText, setCant) => {
+    for (let i = 0; i <= boxes.length; i++) {
+        if (boxes[i] && classes[i] && scores[i] > threshold) {
             const text = classes[i]
             setText(prevText => {
-                if(prevText === labelMap[text]['name']) {
+                if (prevText === labelMap[text]['name']) {
                     setCant(prevState => prevState + 1)
                 } else {
                     setCant(0);
                 }
                 return labelMap[text]['name']
             })
+        }
+    }
+}
+
+export const drawBox = (ctx, boxes, classes, scores, threshold, imgWidth, imgHeight) => {
+    for (let i = 0; i <= boxes.length; i++) {
+        if (boxes[i] && classes[i] && scores[i] > threshold) {
+            const [y, x, height, width] = boxes[i]
+            const text = classes[i]
             ctx.strokeStyle = labelMap[text]['color']
             ctx.lineWidth = 10
             ctx.fillStyle = 'white'
-            ctx.font = '30px Arial'
-
-            // DRAW!!
+            ctx.font = '30px cairo-bold'
             ctx.beginPath()
-            ctx.fillText(labelMap[text]['name'] + ' - ' + Math.round(scores[i]*100)/100, x*imgWidth, y*imgHeight-10)
-            ctx.rect(x*imgWidth, y*imgHeight, width*imgWidth/2, height*imgHeight/2);
+            ctx.fillText(labelMap[text]['name'].toUpperCase(), x * imgWidth, y * imgHeight - 10)
+            ctx.rect(x * imgWidth, y * imgHeight, width * imgWidth / 2, height * imgHeight / 2);
             ctx.stroke()
         }
     }
