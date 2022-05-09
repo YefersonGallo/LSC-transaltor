@@ -6,7 +6,7 @@ import {BounceLoader} from "react-spinners";
 
 export default function Detection({type, letter = "", setReadyText, setNewWord}) {
 
-    const THRESHOLD = 0.9
+    const THRESHOLD = 0.85
 
     const [text, setText] = useState("");
     const [ready, setReady] = useState(0)
