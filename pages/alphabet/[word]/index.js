@@ -43,7 +43,7 @@ export default function Word () {
                 word &&
                 <div className="buttons-practice">
                     {
-                        index - 1 > 0 &&
+                        index - 1 >= 0 &&
                         <Link href={`/alphabet/${WORDS[index - 1]}`}>
                             <div className="button-style cairo-semibold">{WORDS[index - 1].toUpperCase()}</div>
                         </Link>
